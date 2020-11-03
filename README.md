@@ -62,3 +62,20 @@ Driver Class:   org.h2.Driver
 JDBC URL:       jdbc:h2:/tmp/api-persona
 User Name:      api
 Password:       api
+
+
+
+#  DEPLOY ON PLAY-WITH-DOCKER [https://labs.play-with-docker.com/]
+-----------------------------
+
+git clone https://github.com/tpautnfrm/api-persona.git
+
+# https://hub.docker.com/_/maven?tab=description 
+
+cd api-persona
+
+docker run -it --rm --name my-maven-project -v "$(pwd)":/usr/src/mymaven -w /usr/src/mymaven maven mvn clean package -Dmaven.test.skip=true
+
+docker build -t "api-persona" .
+
+docker run --name "api-persona" -d -p 9001:9001 api-persona
