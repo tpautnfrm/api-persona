@@ -26,8 +26,7 @@ import lombok.Data;
 @Data
 public class Revision implements Serializable{
     @Id
-   // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "revision_seq")
-    // @SequenceGenerator(name = "revision_seq", sequenceName = "rbac.seq_revision_id")
+    @GeneratedValue
     @RevisionNumber
     private int id;
 
